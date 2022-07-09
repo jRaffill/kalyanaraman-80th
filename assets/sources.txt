@@ -1,0 +1,8 @@
+Sprites and tileset: https://v3x3d.itch.io/retro-lines
+Maze creator: https://puzzlemaker.discoveryeducation.com/maze
+Arrangement of music: https://s9.imslp.org/files/imglnks/usimg/3/37/IMSLP91799-PMLP188853-mahaganapathim-naattai-eka-dikshitar.pdf
+Some code from: https://medium.com/@michaelwesthadley/modular-game-worlds-in-phaser-3-tilemaps-1-958fc7e6bbd6
+                and phaser.io examples and tutorials. 
+
+Developed by: @jraffill with guidance from @mRaffill and @shankari
+Happy birthday Kalyanaraman!
