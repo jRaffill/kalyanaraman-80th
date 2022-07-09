@@ -1,10 +1,10 @@
 var config = {
     type: Phaser.AUTO,
     parent: 'game-container',
-    width: 800,
-    height: 600,
+    width: 616,
+    height: 616,
     //figure out gravity
-    physics: {default: 'arcade', arcade: {gravity: {y: 100}}},
+    physics: {default: 'arcade', arcade: {gravity: {y: 200}}},
     scene: {
         preload: preload,
         create: create,
@@ -29,22 +29,46 @@ function create ()
     const tileset = map.addTilesetImage('retro', 'tiles');
     const maze = map.createLayer('Maze', tileset, 0, 0);
     maze.setCollisionBetween(0, 139);
-    
-    //figure out spawn point
-    player = this.physics.add.sprite(400, 300, 'sprite');
-    //figure out frame rate
+
+    this.add.image(520, 528, 'invite');
+
+    const spawn = map.findObject('Dots', obj => obj.name === 'spawn')
+    player = this.physics.add.sprite(spawn.x, spawn.y, 'sprite').setScale(0.9);
+    player.setBounce(0.4);
+
     this.anims.create(
         {key: 'anim',
          frames: this.anims.generateFrameNumbers('sprite', { start: 0, end: 3 }),
-         frameRate: 10,
+         frameRate: 7,
          repeat: -1
         }
     );
+    player.anims.play('anim');
+    player.flipX = true;
     
     this.physics.add.collider(player, maze);
+
+    cursors = this.input.keyboard.createCursorKeys();
     
+    const camera = this.cameras.main;
+    camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels).setZoom(1.75);
+    camera.pan(0, 0);
+
 }
 
 function update ()
 {
+    if (cursors.left.isDown) {
+        player.setVelocityX(-100);
+        player.flipX = false;
+    }
+    
+    else if (cursors.right.isDown) {
+        player.setVelocityX(100);
+        player.flipX = true;
+    }
+
+    else {player.setVelocityX(0);};
+
+    if (cursors.up.isDown) {player.setVelocityY(-50);}
 }
