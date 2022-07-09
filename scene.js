@@ -4,7 +4,7 @@ var config = {
     width: 800,
     height: 600,
     //figure out gravity
-    physics: {default: 'arcade', arcade: {gravity: {y: 100}}}
+    physics: {default: 'arcade', arcade: {gravity: {y: 100}}},
     scene: {
         preload: preload,
         create: create,
