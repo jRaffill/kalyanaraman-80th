@@ -20,7 +20,7 @@ function preload ()
     this.load.image('invite', 'assets/80th_Invite.png');    
     this.load.image('tiles', 'assets/80th_Tiles.png');
     this.load.tilemapTiledJSON('map', 'assets/80th_Maze.json');
-    this.load.spritesheet('sprite', 'assets/80th_Sprite.png', { frameWidth: 16, frameHeight: 16 });
+    this.load.spritesheet('sprite', 'assets/80th_Sprite.png', { frameWidth: 16, frameHeight: 12 });
 }
 
 function create ()
