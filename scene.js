@@ -21,10 +21,13 @@ function preload ()
     this.load.image('tiles', 'assets/80th_Tiles.png');
     this.load.tilemapTiledJSON('map', 'assets/80th_Maze.json');
     this.load.spritesheet('sprite', 'assets/80th_Sprite.png', { frameWidth: 16, frameHeight: 12 });
+    this.load.spritesheet('dotSprite', 'assets/80th_Dot.png', {frameWidth: 16, frameHeight: 16});
 }
 
 function create ()
 {
+    var square = 1;
+    
     const map = this.make.tilemap({key: 'map'});
     const tileset = map.addTilesetImage('retro', 'tiles');
     const maze = map.createLayer('Maze', tileset, 0, 0);
@@ -32,7 +35,7 @@ function create ()
 
     this.add.image(520, 528, 'invite');
 
-    const spawn = map.findObject('Dots', obj => obj.name === 'spawn')
+    const spawn = map.findObject('Spawn', obj => obj.name === 'spawn')
     player = this.physics.add.sprite(spawn.x, spawn.y, 'sprite').setScale(0.9);
     player.setBounce(0.4);
 
@@ -49,7 +52,31 @@ function create ()
     this.physics.add.collider(player, maze);
 
     cursors = this.input.keyboard.createCursorKeys();
+
+    const dots = this.physics.add.group();
+
+    for (i = 1; i <= 8; i++) {
+        let dotspot = map.findObject('Spawn', obj => obj.name === 'dot' + i);
+        let key = 'dot' + i;
+        dots.create(dotspot.x, dotspot.y, 'dot').name = key;
+    }
+
+    this.anims.create({
+        key: 'dots',
+        frames: this.anims.generateFrameNumbers('dotSprite', { start: 0, end: 4 }),
+        frameRate: 6.67,
+        repeat: -1
+    });
     
+    this.physics.add.collider(dots, maze);
+    dots.playAnimation('dots');
+    
+    function endLevel(player, dot) {
+        console.log(dot);
+    }
+
+    this.physics.add.overlap(player, dots, endLevel, null, this);
+
     const camera = this.cameras.main;
     camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels).setZoom(1.75);
     camera.pan(0, 0);

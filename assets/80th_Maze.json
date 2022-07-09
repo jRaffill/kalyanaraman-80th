@@ -80,116 +80,116 @@
         }, 
         {
          "draworder":"topdown",
-         "id":10,
-         "name":"Dots",
+         "id":13,
+         "name":"Spawn",
          "objects":[
                 {
                  "class":"",
-                 "gid":787,
-                 "height":16,
-                 "id":1,
-                 "name":"",
-                 "rotation":0,
-                 "visible":true,
-                 "width":16,
-                 "x":336,
-                 "y":112
-                }, 
-                {
-                 "class":"",
-                 "gid":787,
-                 "height":16,
-                 "id":2,
-                 "name":"",
-                 "rotation":0,
-                 "visible":true,
-                 "width":16,
-                 "x":928,
-                 "y":352
-                }, 
-                {
-                 "class":"",
-                 "gid":787,
-                 "height":16,
-                 "id":3,
-                 "name":"",
-                 "rotation":0,
-                 "visible":true,
-                 "width":16,
-                 "x":672,
-                 "y":176
-                }, 
-                {
-                 "class":"",
-                 "gid":787,
-                 "height":16,
-                 "id":4,
-                 "name":"",
-                 "rotation":0,
-                 "visible":true,
-                 "width":16,
-                 "x":992,
-                 "y":704
-                }, 
-                {
-                 "class":"",
-                 "gid":787,
-                 "height":16,
-                 "id":5,
-                 "name":"",
-                 "rotation":0,
-                 "visible":true,
-                 "width":16,
-                 "x":688,
-                 "y":864
-                }, 
-                {
-                 "class":"",
-                 "gid":787,
-                 "height":16,
-                 "id":6,
-                 "name":"",
-                 "rotation":0,
-                 "visible":true,
-                 "width":16,
-                 "x":352,
-                 "y":928
-                }, 
-                {
-                 "class":"",
-                 "gid":787,
-                 "height":16,
-                 "id":7,
-                 "name":"",
-                 "rotation":0,
-                 "visible":true,
-                 "width":16,
-                 "x":48,
-                 "y":720
-                }, 
-                {
-                 "class":"",
-                 "gid":787,
-                 "height":16,
-                 "id":8,
-                 "name":"",
-                 "rotation":0,
-                 "visible":true,
-                 "width":16,
-                 "x":336,
-                 "y":544
-                }, 
-                {
-                 "class":"",
                  "height":0,
-                 "id":9,
+                 "id":19,
                  "name":"spawn",
                  "point":true,
                  "rotation":0,
                  "visible":true,
                  "width":0,
                  "x":24,
-                 "y":192
+                 "y":112
+                }, 
+                {
+                 "class":"",
+                 "height":0,
+                 "id":20,
+                 "name":"dot1",
+                 "point":true,
+                 "rotation":0,
+                 "visible":true,
+                 "width":0,
+                 "x":344,
+                 "y":80
+                }, 
+                {
+                 "class":"",
+                 "height":0,
+                 "id":21,
+                 "name":"dot2",
+                 "point":true,
+                 "rotation":0,
+                 "visible":true,
+                 "width":0,
+                 "x":680,
+                 "y":144
+                }, 
+                {
+                 "class":"",
+                 "height":0,
+                 "id":22,
+                 "name":"dot3",
+                 "point":true,
+                 "rotation":0,
+                 "visible":true,
+                 "width":0,
+                 "x":936,
+                 "y":336
+                }, 
+                {
+                 "class":"",
+                 "height":0,
+                 "id":23,
+                 "name":"dot4",
+                 "point":true,
+                 "rotation":0,
+                 "visible":true,
+                 "width":0,
+                 "x":1000,
+                 "y":688
+                }, 
+                {
+                 "class":"",
+                 "height":0,
+                 "id":24,
+                 "name":"dot5",
+                 "point":true,
+                 "rotation":0,
+                 "visible":true,
+                 "width":0,
+                 "x":696,
+                 "y":832
+                }, 
+                {
+                 "class":"",
+                 "height":0,
+                 "id":25,
+                 "name":"dot6",
+                 "point":true,
+                 "rotation":0,
+                 "visible":true,
+                 "width":0,
+                 "x":360,
+                 "y":896
+                }, 
+                {
+                 "class":"",
+                 "height":0,
+                 "id":26,
+                 "name":"dot7",
+                 "point":true,
+                 "rotation":0,
+                 "visible":true,
+                 "width":0,
+                 "x":56,
+                 "y":688
+                }, 
+                {
+                 "class":"",
+                 "height":0,
+                 "id":27,
+                 "name":"dot8",
+                 "point":true,
+                 "rotation":0,
+                 "visible":true,
+                 "width":0,
+                 "x":344,
+                 "y":512
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -197,8 +197,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":13,
- "nextobjectid":10,
+ "nextlayerid":14,
+ "nextobjectid":28,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.9.0",
@@ -215,6 +215,31 @@
          "spacing":0,
          "tilecount":840,
          "tileheight":16,
+         "tiles":[
+                {
+                 "animation":[
+                        {
+                         "duration":150,
+                         "tileid":784
+                        }, 
+                        {
+                         "duration":150,
+                         "tileid":783
+                        }, 
+                        {
+                         "duration":150,
+                         "tileid":787
+                        }, 
+                        {
+                         "duration":150,
+                         "tileid":786
+                        }, 
+                        {
+                         "duration":150,
+                         "tileid":782
+                        }],
+                 "id":786
+                }],
          "tilewidth":16
         }, 
         {
