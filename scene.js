@@ -91,7 +91,7 @@ function create ()
 
     const camera = this.cameras.main;
     camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels).setZoom(1.75);
-    camera.pan(1024, 0);
+    camera.pan(0, 0);
 
 }
 
