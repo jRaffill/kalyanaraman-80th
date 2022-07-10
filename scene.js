@@ -15,8 +15,10 @@ var game = new Phaser.Game(config);
 var player;
 var sceneEndStats = [{imgX: 176, imgY: 176, imgScale: 0.66, newX: 340, newY: 0, panX: 512, panY: 0, rmT1: [22, 5], rmT2: [22, 6]}, 
                     {imgX: 510, imgY: 176, imgScale: 0.5, newX: 696, newY: 0,    panX: 1040, panY: 0, rmT1: [43, 9], rmT2: [43, 10]}, 
-                    {imgX: 510, imgY: 0, imgScale: 0.5, newX: 960, newY: 384, panX: 864, panY: 528, rmT1: [59, 22], rmT2: [60, 22]},
-                    {imgX: 0, imgY: 0, imgScale: 0.5, newX: 992, newY: 737, panX: 864, panY: 864, rmT1: [61, 44], rmT2: [62, 44]}, {}, {}, {}, {}];
+                    {imgX: '*****', imgY: '*****', imgScale: '0.5', newX: 960, newY: 384, panX: 864, panY: 528, rmT1: [59, 22], rmT2: [60, 22]},
+                    {imgX: '*****', imgY: '*****', imgScale: '0.5', newX: 992, newY: 737, panX: 864, panY: 864, rmT1: [61, 44], rmT2: [62, 44]}, 
+                    {imgX: '*****', imgY: '*****', imgScale: '0.5', newX: 678, newY: 863, panX: 528, panY: 864, rmT1: [42, 52], rmT2: [42, 53]},
+                     {}, {}, {}];
 
 function preload ()
 {
@@ -27,6 +29,7 @@ function preload ()
     this.load.tilemapTiledJSON('map', 'assets/80th_Maze.json');
     this.load.spritesheet('sprite', 'assets/80th_Sprite.png', { frameWidth: 16, frameHeight: 12 });
     this.load.spritesheet('dotSprite', 'assets/80th_Dot.png', {frameWidth: 16, frameHeight: 16});
+    this.load.audio('audioSynth', ['assets/80th_AudioSynth.ogg', 'assets/80th_AudioSynth.mp3']);
 }
 
 function create ()
@@ -98,6 +101,8 @@ function create ()
     this.input.on('pointerup', () => {if (invite = true) 
         {camera.centerOn(0, 0); invite = false;}
     });
+
+    this.sound.play('audioSynth', {loop: true});
 }
 
 function update ()
