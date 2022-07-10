@@ -13,8 +13,8 @@ var config = {
 
 var game = new Phaser.Game(config);
 var player;
-var sceneEndStats = [{imgX: 176, imgY: 176, imgScale: 0.66, newX: 390, newY: 0, panX: 512, panY: 0}, 
-                    {imgX: 510, imgY: 176, imgScale: 0.5, newX: 696, newY: 0, panX: 1024, panY: 0}, 
+var sceneEndStats = [{imgX: 176, imgY: 176, imgScale: 0.66, newX: 340, newY: 0, panX: 512, panY: 0}, 
+                    {imgX: 510, imgY: 176, imgScale: 0.5, newX: 696, newY: 0,    panX: 1040, panY: 0}, 
                     {}, {}, {}, {}, {}, {}];
 
 function preload ()
@@ -81,7 +81,10 @@ function create ()
             if (s.newX != 0) {player.x = s.newX;}
             if (s.newY != 0) {player.y = s.newY;};
             dot.destroy();
-            camera.pan(s.panX, s.panY);
+            console.log(camera.centerX + ', ' + camera.centerY);
+            console.log('just destroyed dot, panning to ' + JSON.stringify(s));
+            camera.centerOn(s.panX, s.panY);
+            console.log('supposed to have panned to ' + JSON.stringify(s) + ', currently at (' + camera.centerX + ', ' + camera.centerY + ')');
         },);
     };
 
