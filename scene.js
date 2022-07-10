@@ -13,9 +13,10 @@ var config = {
 
 var game = new Phaser.Game(config);
 var player;
-var sceneEndStats = [{imgX: 176, imgY: 176, imgScale: 0.66, newX: 340, newY: 0, panX: 512, panY: 0}, 
-                    {imgX: 510, imgY: 176, imgScale: 0.5, newX: 696, newY: 0,    panX: 1040, panY: 0}, 
-                    {}, {}, {}, {}, {}, {}];
+var sceneEndStats = [{imgX: 176, imgY: 176, imgScale: 0.66, newX: 340, newY: 0, panX: 512, panY: 0, rmT1: [22, 5], rmT2: [22, 6]}, 
+                    {imgX: 510, imgY: 176, imgScale: 0.5, newX: 696, newY: 0,    panX: 1040, panY: 0, rmT1: [43, 9], rmT2: [43, 10]}, 
+                    {imgX: 510, imgY: 0, imgScale: 0.5, newX: 960, newY: 384, panX: 864, panY: 528, rmT1: [59, 22], rmT2: [60, 22]},
+                    {imgX: 0, imgY: 0, imgScale: 0.5, newX: 992, newY: 737, panX: 864, panY: 864, rmT1: [61, 44], rmT2: [62, 44]}, {}, {}, {}, {}];
 
 function preload ()
 {
@@ -35,7 +36,7 @@ function create ()
     const maze = map.createLayer('Maze', tileset, 0, 0);
     maze.setCollisionBetween(0, 139);
 
-    this.add.image(520, 528, 'invite');
+    this.add.image(520, 528, 'invite').setScale(0.19);
 
     const spawn = map.findObject('Spawn', obj => obj.name === 'spawn')
     player = this.physics.add.sprite(spawn.x, spawn.y, 'sprite').setScale(0.9);
@@ -81,10 +82,9 @@ function create ()
             if (s.newX != 0) {player.x = s.newX;}
             if (s.newY != 0) {player.y = s.newY;};
             dot.destroy();
-            console.log(camera.centerX + ', ' + camera.centerY);
-            console.log('just destroyed dot, panning to ' + JSON.stringify(s));
             camera.centerOn(s.panX, s.panY);
-            console.log('supposed to have panned to ' + JSON.stringify(s) + ', currently at (' + camera.centerX + ', ' + camera.centerY + ')');
+            maze.removeTileAt(s.rmT1[0], s.rmT1[1]);
+            maze.removeTileAt(s.rmT2[0], s.rmT2[1]);
         },);
     };
 
@@ -92,8 +92,12 @@ function create ()
 
     const camera = this.cameras.main;
     camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels).setZoom(1.75);
-    camera.pan(0, 0);
+    camera.centerOn(520, 528);
+    let invite = true;
 
+    this.input.on('pointerup', () => {if (invite = true) 
+        {camera.centerOn(0, 0); invite = false;}
+    });
 }
 
 function update ()
