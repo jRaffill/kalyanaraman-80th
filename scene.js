@@ -1,8 +1,11 @@
 var config = {
     type: Phaser.AUTO,
-    parent: 'game-container',
-    width: 616,
-    height: 616,
+    scale: {
+        parent: 'game-container',
+        mode: Phaser.Scale.FIT,
+        width: 616,
+        height: 616
+    },
     physics: {default: 'arcade', arcade: {gravity: {y: 200}}},
     scene: {
         preload: preload,
@@ -13,11 +16,9 @@ var config = {
 
 var game = new Phaser.Game(config);
 var player;
-var sceneEndStats = [{imgX: 176, imgY: 176, imgScale: 0.66, newX: 340, newY: 0, panX: 512, panY: 0, rmT1: [22, 5], rmT2: [22, 6]}, 
-                    {imgX: 510, imgY: 176, imgScale: 0.5, newX: 696, newY: 0,    panX: 1040, panY: 0, rmT1: [43, 9], rmT2: [43, 10]}, 
-                    {imgX: '*****', imgY: '*****', imgScale: '0.5', newX: 960, newY: 384, panX: 864, panY: 528, rmT1: [59, 22], rmT2: [60, 22]},
-                    {imgX: '*****', imgY: '*****', imgScale: '0.5', newX: 992, newY: 737, panX: 864, panY: 864, rmT1: [61, 44], rmT2: [62, 44]}, 
-                    {imgX: '*****', imgY: '*****', imgScale: '0.5', newX: 678, newY: 863, panX: 528, panY: 864, rmT1: [42, 52], rmT2: [42, 53]},
+var sceneEndStats = [{imgX: 176, imgY: 176, imgScale: 0.66, newX: 340, newY: 0, panX: 512, panY: 0, rmT1: [22, 5], rmT2: [22, 6], add1: [20, 5], add2: [20,6]},     {imgX: 510, imgY: 176, imgScale: 0.5, newX: 696, newY: 0, panX: 1040, panY: 0, rmT1: [43, 9], rmT2: [43, 10], add1: [42, 9], add2: [42, 10]}, 
+    {imgX: '*****', imgY: '*****', imgScale: '0.5', newX: 960, newY: 384, panX: 864, panY: 528, rmT1: [59, 22], rmT2: [60, 22], add1: [59, 21], add2: [60,21]},
+    {imgX: '*****', imgY: '*****', imgScale: '0.5', newX: 992, newY: 737, panX: 864, panY: 864, rmT1: [63, 44], rmT2: [62, 44], add1: [62, 42], add2: [63, 42]},    {imgX: '*****', imgY: '*****', imgScale: '0.5', newX: 678, newY: 863, panX: 528, panY: 864, rmT1: [42, 52], rmT2: [42, 53], add1: [44, 52], add2: [44, 53]},
                      {}, {}, {}];
 
 function preload ()
@@ -88,6 +89,8 @@ function create ()
             camera.centerOn(s.panX, s.panY);
             maze.removeTileAt(s.rmT1[0], s.rmT1[1]);
             maze.removeTileAt(s.rmT2[0], s.rmT2[1]);
+            maze.putTileAt(7, s.add1[0], s.add1[1]);
+            maze.putTileAt(7, s.add2[0], s.add2[1]);
         },);
     };
 
