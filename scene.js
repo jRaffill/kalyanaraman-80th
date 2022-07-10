@@ -30,8 +30,6 @@ function preload ()
 
 function create ()
 {
-    var square = 1;
-    
     const map = this.make.tilemap({key: 'map'});
     const tileset = map.addTilesetImage('retro', 'tiles');
     const maze = map.createLayer('Maze', tileset, 0, 0);
