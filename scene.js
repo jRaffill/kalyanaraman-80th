@@ -17,9 +17,12 @@ var config = {
 var game = new Phaser.Game(config);
 var player;
 var sceneEndStats = [{imgX: 176, imgY: 176, imgScale: 0.66, newX: 340, newY: 0, panX: 512, panY: 0, rmT1: [22, 5], rmT2: [22, 6], add1: [20, 5], add2: [20,6]},     {imgX: 510, imgY: 176, imgScale: 0.5, newX: 696, newY: 0, panX: 1040, panY: 0, rmT1: [43, 9], rmT2: [43, 10], add1: [42, 9], add2: [42, 10]}, 
-    {imgX: '*****', imgY: '*****', imgScale: '0.5', newX: 960, newY: 384, panX: 864, panY: 528, rmT1: [59, 22], rmT2: [60, 22], add1: [59, 21], add2: [60,21]},
-    {imgX: '*****', imgY: '*****', imgScale: '0.5', newX: 992, newY: 737, panX: 864, panY: 864, rmT1: [63, 44], rmT2: [62, 44], add1: [62, 42], add2: [63, 42]},    {imgX: '*****', imgY: '*****', imgScale: '0.5', newX: 678, newY: 863, panX: 528, panY: 864, rmT1: [42, 52], rmT2: [42, 53], add1: [44, 52], add2: [44, 53]},
-                     {}, {}, {}];
+    {imgX: 866, imgY: 176, imgScale: 0.325, newX: 960, newY: 384, panX: 864, panY: 528, rmT1: [59, 22], rmT2: [60, 22], add1: [59, 21], add2: [60,21]},
+    {imgX: 864, imgY: 528, imgScale: 0.214, newX: 992, newY: 737, panX: 864, panY: 864, rmT1: [63, 44], rmT2: [62, 44], add1: [62, 42], add2: [63, 42]},
+    {imgX: 864, imgY: 864, imgScale: 0.25, newX: 678, newY: 863, panX: 528, panY: 864, rmT1: [42, 52], rmT2: [42, 53], add1: [44, 52], add2: [44, 53]},
+    {imgX: 528, imgY: 864, imgScale: 0.15625, newX: 343, newY: 905, panX: 0, panY: 864, rmT1: [21, 56], rmT2: [21, 57], add1: [22, 56], add2: [22, 57]}, 
+    {imgX: 176, imgY: 864, imgScale: 0.15625, newX: 80, newY: 656, panX: 0, panY: 528}, 
+    {imgX: 176, imgY: 528, imgScale: 0.123, newX: -10, newY: -10, panX: 0, panY: 528}];
 var moveLeft;
 var moveRight;
 var moveUp;
@@ -30,6 +33,12 @@ function preload ()
     this.load.image('tiles', 'assets/80th_Tiles.png');
     this.load.image('imagedot1', 'assets/80th_Photo1.png');
     this.load.image('imagedot2', 'assets/80th_Photo2.png');
+    this.load.image('imagedot3', 'assets/80th_Photo3.png');
+    this.load.image('imagedot4', 'assets/80th_Photo4.png');
+    this.load.image('imagedot5', 'assets/80th_Photo5.png');
+    this.load.image('imagedot6', 'assets/80th_Photo6.png');
+    this.load.image('imagedot7', 'assets/80th_Photo7.png');
+    this.load.image('imagedot8', 'assets/80th_Photo8.png');
     this.load.image('left', 'assets/80th_LeftArrow.png');
     this.load.image('right', 'assets/80th_RightArrow.png');
     this.load.image('up', 'assets/80th_UpArrow.png');
@@ -104,7 +113,8 @@ function create ()
 
     const camera = this.cameras.main;
     camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels).setZoom(1.75);
-    camera.centerOn(520, 528);
+    //camera.centerOn(520, 528);
+    camera.centerOn(0, 528);
     let invite = true;
     let leftbutton;
 
