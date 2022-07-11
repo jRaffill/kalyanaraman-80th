@@ -20,6 +20,9 @@ var sceneEndStats = [{imgX: 176, imgY: 176, imgScale: 0.66, newX: 340, newY: 0, 
     {imgX: '*****', imgY: '*****', imgScale: '0.5', newX: 960, newY: 384, panX: 864, panY: 528, rmT1: [59, 22], rmT2: [60, 22], add1: [59, 21], add2: [60,21]},
     {imgX: '*****', imgY: '*****', imgScale: '0.5', newX: 992, newY: 737, panX: 864, panY: 864, rmT1: [63, 44], rmT2: [62, 44], add1: [62, 42], add2: [63, 42]},    {imgX: '*****', imgY: '*****', imgScale: '0.5', newX: 678, newY: 863, panX: 528, panY: 864, rmT1: [42, 52], rmT2: [42, 53], add1: [44, 52], add2: [44, 53]},
                      {}, {}, {}];
+var moveLeft;
+var moveRight;
+var moveUp;
 
 function preload ()
 {
@@ -27,6 +30,9 @@ function preload ()
     this.load.image('tiles', 'assets/80th_Tiles.png');
     this.load.image('imagedot1', 'assets/80th_Photo1.png');
     this.load.image('imagedot2', 'assets/80th_Photo2.png');
+    this.load.image('left', 'assets/80th_LeftArrow.png');
+    this.load.image('right', 'assets/80th_RightArrow.png');
+    this.load.image('up', 'assets/80th_UpArrow.png');
     this.load.tilemapTiledJSON('map', 'assets/80th_Maze.json');
     this.load.spritesheet('sprite', 'assets/80th_Sprite.png', { frameWidth: 16, frameHeight: 12 });
     this.load.spritesheet('dotSprite', 'assets/80th_Dot.png', {frameWidth: 16, frameHeight: 16});
@@ -100,27 +106,49 @@ function create ()
     camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels).setZoom(1.75);
     camera.centerOn(520, 528);
     let invite = true;
+    let leftbutton;
 
     this.input.on('pointerup', () => {if (invite = true) 
-        {camera.centerOn(0, 0); invite = false;}
+        {camera.centerOn(0, 0); 
+         invite = false;
+         leftButton.visible = true;
+         rightButton.visible = true;
+         upButton.visible = true;}
     });
+
+    leftButton = this.add.sprite(284, 460, 'left').setInteractive().setScrollFactor(0);
+    leftButton.visible = false;
+    moveLeft = false;
+    leftButton.on('pointerdown', () => {moveLeft = true;}, this);
+    leftButton.on('pointerup', () => {moveLeft = false;}, this);
+    leftButton.on('pointerout', () => {moveLeft = false;}, this)
+    upButton = this.add.sprite(300, 444, 'up').setInteractive().setScrollFactor(0); 
+    upButton.visible = false;
+    upButton.on('pointerdown', () => {moveUp = true;}, this);
+    upButton.on('pointerup', () => {moveUp = false;}, this);
+    upButton.on('pointerout', () => {moveUp = false;}, this)
+    rightButton = this.add.sprite(316, 460, 'right').setInteractive().setScrollFactor(0);
+    rightButton.visible = false;
+    rightButton.on('pointerdown', () => {moveRight= true;}, this);
+    rightButton.on('pointerup', () => {moveRight = false;}, this);
+    rightButton.on('pointerout', () => {moveRight = false;}, this)
 
     this.sound.play('audioSynth', {loop: true});
 }
 
 function update ()
 {
-    if (cursors.left.isDown) {
+    if (cursors.left.isDown || moveLeft == true) {
         player.setVelocityX(-100);
         player.flipX = false;
     }
     
-    else if (cursors.right.isDown) {
+    else if (cursors.right.isDown || moveRight == true) {
         player.setVelocityX(100);
         player.flipX = true;
     }
 
     else {player.setVelocityX(0);};
 
-    if (cursors.up.isDown) {player.setVelocityY(-50);}
+    if (cursors.up.isDown || moveUp == true) {player.setVelocityY(-50);}
 }
