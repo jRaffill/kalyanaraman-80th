@@ -113,8 +113,7 @@ function create ()
 
     const camera = this.cameras.main;
     camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels).setZoom(1.75);
-    //camera.centerOn(520, 528);
-    camera.centerOn(0, 528);
+    camera.centerOn(520, 528);
     let invite = true;
     let leftbutton;
 
