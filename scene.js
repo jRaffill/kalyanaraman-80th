@@ -110,12 +110,12 @@ function create ()
 
     this.input.on('pointerup', () => {if (invite = true) 
         {camera.centerOn(0, 0); 
-         invite = false;
-         leftButton.visible = true;
-         rightButton.visible = true;
-         upButton.visible = true;}
+         invite = false;}
+         //leftButton.visible = true;
+         //rightButton.visible = true;
+         //upButton.visible = true;}
     });
-
+    /* BUTTONS FOR PHONES (NOT WORKING).
     leftButton = this.add.sprite(284, 460, 'left').setInteractive().setScrollFactor(0);
     leftButton.visible = false;
     moveLeft = false;
@@ -132,7 +132,7 @@ function create ()
     rightButton.on('pointerdown', () => {moveRight= true;}, this);
     rightButton.on('pointerup', () => {moveRight = false;}, this);
     rightButton.on('pointerout', () => {moveRight = false;}, this)
-
+*/
     this.sound.play('audioSynth', {loop: true});
 }
 
