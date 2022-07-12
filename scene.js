@@ -22,13 +22,14 @@ var sceneEndStats = [{imgX: 176, imgY: 176, imgScale: 0.66, newX: 360, newY: 80,
     {imgX: 864, imgY: 528, imgScale: 0.214, newX: 992, newY: 737, panX: 864, panY: 864, rmT1: [63, 44], rmT2: [62, 44], add1: [62, 42], add2: [63, 42]},
     {imgX: 864, imgY: 864, imgScale: 0.25, newX: 678, newY: 863, panX: 528, panY: 864, rmT1: [42, 52], rmT2: [42, 53], add1: [44, 52], add2: [44, 53]},
     {imgX: 528, imgY: 864, imgScale: 0.15625, newX: 343, newY: 905, panX: 0, panY: 864, rmT1: [21, 56], rmT2: [21, 57], add1: [22, 56], add2: [22, 57]}, 
-    {imgX: 176, imgY: 864, imgScale: 0.15625, newX: 80, newY: 656, panX: 0, panY: 528}, 
-    {imgX: 176, imgY: 528, imgScale: 0.4167, newX: -10, newY: -10, panX: 0, panY: 528}];
+    {imgX: 176, imgY: 864, imgScale: 0.15625, newX: 80, newY: 656, panX: 0, panY: 528, rmT1: [21, 56], rmT2: [21, 57], add1: [22, 56], add2: [22, 57]}, 
+    {imgX: 176, imgY: 528, imgScale: 0.4167, newX: -10, newY: -10, panX: 520, panY: 528, rmT1: [21, 56], rmT2: [21, 57], add1: [22, 56], add2: [22, 57]}];
 
 function preload ()
 {
     this.load.image('invite', 'assets/80th_Invite.png');
     this.load.image('instructions', 'assets/80th_Instructions.png');
+    this.load.image('end', 'assets/80th_End.png');
     this.load.image('tiles', 'assets/80th_Tiles.png');
     this.load.image('imagedot1', 'assets/80th_Photo1.png');
     this.load.image('imagedot2', 'assets/80th_Photo2.png');
@@ -137,6 +138,7 @@ function create ()
             camera.centerOn(0, 0);
             instructions = false;
             skip.visible = true;
+            this.add.image(520, 528, 'end').setScale(0.19);
         };
     });
     
